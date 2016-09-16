@@ -1,0 +1,3 @@
+
+api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
+search_results = api.search(q="#AnaquelesVaciosEnVenezuela", geocode="10.4806, 66.9036,10km")
