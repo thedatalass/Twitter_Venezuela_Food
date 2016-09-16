@@ -180,6 +180,12 @@ comments_with_scores = []
 for comment in user.get_comments(limit=50):
     comments_with_scores.append((comment.body, comment.score))
 
+#In order to capture Twitter feeds with special characters (i.e.-unicode), do the following
+#In Windows, type "cmd" to bring up system window
+#Type "pip install win-unicode-console"
+#Here's the workaround code in Python Anaconda
+import win_unicode_console
+win_unicode_console.enable()
 
 
 
