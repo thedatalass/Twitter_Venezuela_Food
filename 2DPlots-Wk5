@@ -1,0 +1,53 @@
+#Week 5 - Visualization Python code
+import matplotlib.pyplot as plt
+#2D Plot
+no_of_phone_calls = [2, 4, 3, 2, 5, 4, 7, 10, 22, 32, 35, 34, 14, 10, 29, 35, 39, 31, 25, 24, 15, 11, 9, 4, 5]
+plt.plot(no_of_phone_calls)
+plt.show()
+#Add x and y-axis label & title
+plt.plot(no_of_phone_calls)
+plt.xlabel("Hour of the Day")
+plt.ylabel("Number of Phone Calls")
+plt.title("Call Volume throughout the Day")
+plt.show()
+
+#Only have the data for 6 a.m, 8a.m, noon, etc
+time_of_day = [6, 8, 10, 12, 14, 16, 18]
+no_of_phone_calls =[7, 22, 35, 14, 29, 39, 25]
+#We have to indicate x values since they don't increment by 1
+
+plt.plot(time_of_day, no_of_phone_calls)
+plt.show()
+
+#Linear Regression
+import numpy as np
+#Generate the same set of random numbers for instructional purposes
+np.random.seed(3057)
+heights = np.random.normal(113,20, 20)
+noise = np.random.normal(0, 5, 20)
+weights = 25.39 + .34 * heights + noise
+plt.plot(heights, weights)
+plt.show()
+#By default there is a line drawn between x coordinates & b/w y coordinates
+#Provide 3rd argument (string) to plot
+#Letter o is unconnected dot since sequence of points doesn't have meanings
+#the 3rd argument is format string
+plt.plot(heights, weights,"o")
+plt.show()
+#Give a plot of "x's"
+plt.plot(heights, weights, "x")
+plt.show()
+#Give plots a color; "r" is red, "o" is kind of point displayed
+plt.plot(heights,weights, "ro")
+plt.show()
+#Representing categories with different colors and shapes
+#First 10 data points are type 1; Second 10 data points are type 2
+set1_heights = heights[:10]
+set1_weights = weights[:10]
+
+set2_heights = heights[10:]
+set2_weights = weights[10:]
+
+#Combine the set function calls in same plot
+plt.plot(set1_heights, set1_weights, "ro", set2_heights, set2_weights, "gx")
+plt.show()
