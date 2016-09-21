@@ -1,0 +1,36 @@
+#Using Visualizations for Models
+#Finding best value for k-nearest neighbor
+#Pick a bunch of values for k
+#Train a model for each k and get an evaluative score on the test set
+#visualize the scores
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.cross_validation import train_test_split
+
+x = iris.data
+y = iris.target
+
+x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=.33, random_state=9876)
+#makes a sequential list of numbers with start & end between 1 and 100; every odd number 
+k_values = np.arange(1, 100, 2)
+print(k_values)
+  
+accuracies = []
+for k in k_values:
+    clf = KNeighborsClassifier(n_neighbors=k)
+    clf.fit(x_train, y_train)
+    y_pred = clf.predict(x_test)
+    y_true = y_test
+    accuracy = accuracy_score(y_true, y_pred)
+    accuracies.append(accuracy)
+accuracies
+plt.plot(k_values, accuracies)
+plt.xlabel("k")
+plt.ylabel("Accuracy")
+plt.title("kNN Accuracy over k")
+plt.show()
+
+#Merge 2 lists as a list of tuples
+k_accuracies = list(zip(k_values,accuracies))
+k_accuracies [5:15]
+#optimum k values are 17, 19 and 21
