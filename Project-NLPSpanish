@@ -33,8 +33,3 @@ bi_tag.evaluate(cess_sents[train+1:])
 # Using the tagger.
 bi_tag.tag(sentence.split(" "))
 
-# Natural Language Toolkit in English: Wordfreq Application
-# http://www.nltk.org/book/ch02.html
-# Copyright (C) 2001-2016 NLTK Project
-# Author: Sumukh Ghodke <sghodke@csse.unimelb.edu.au>
-# URL: <http://nltk.org/>
