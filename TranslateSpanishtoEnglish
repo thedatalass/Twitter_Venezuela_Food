@@ -1,0 +1,9 @@
+#Translate from Spanish to English
+#Type in the following command in the Windows "cmd"
+pip install PyDictionary
+
+from PyDictionary import PyDictionary
+
+dictionary=PyDictionary()
+#Translation example
+print (dictionary.translate("Range","Scarcity", 'es'))
