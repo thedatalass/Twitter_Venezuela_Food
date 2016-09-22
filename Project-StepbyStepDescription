@@ -1,0 +1,6 @@
+1. Get the data in Spanish
+2. NLP the data
+3. Machine Learning Validation - Kernel Density, Logistic Regress Model
+4. Visualization
+ a. Scattermapbox - heat map by neighborhood
+ b. Interactive component?
