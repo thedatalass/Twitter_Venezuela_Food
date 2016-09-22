@@ -24,41 +24,6 @@ for status in c.items(500):
 tweet_texts
 
 
-#NLP in English Lowercase
-tweet_texts =[x.lower() for x in tweet_texts]
-tweet_texts[2]
-
-#Split strings into list of individual words
-tweet_texts = [x.split() for x in tweet_texts]
-tweet_texts[:5]
-
-#Determine word frequency amongst these texts to make a 2D histogram
-from collections import Counter
-word_frequency = Counter()
-for x in tweet_texts: 
-    word_frequency.update(x)
-word_frequency
-
-word_frequency.most_common(20)
-top20 = word_frequency.most_comm(20)
-top20
-top_words = [x[0] for x in top20]
-top_frequencies = [x[1] for x intop20]
-#verify separation of data
-print(top_words[:5])
-print("*"*50)
-print(top_frequencies[:5])
-x_positions = np.arange(20)
-x_positions
-
-plt.bar(x_positions, top_frequencies)
-plt.xticks(x_positions, top_words, rotation = 90)
-#correct offsetting of words in barchart--move the word to the right
-plt.bar(x_positions, top_frequencies)
-plt.xsticks(x_positions+0.5, top_words, rotation=90)
-plt.title("Word Frequency in Most Recent Trump Tweets")
-plt.ylabel("Frequency")
-plt.show()
 
 #NLP in Spanish: http://textminingonline.com/dive-into-nltk-part-ii-sentence-tokenize-and-word-tokenize
 import nltk.data
