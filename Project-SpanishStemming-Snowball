@@ -1,0 +1,23 @@
+#http://snowball.tartarus.org/algorithms/spanish/stemmer.html
+
+from nltk.stem.snowball import SnowballStemmer
+
+#see which languages are supported
+print(" ".join(SnowballStemmer.languages))
+
+#Create a new instance of a language specific subclass.
+
+stemmer = SnowballStemmer("spanish")
+
+#Stem a word.
+
+print(stemmer.stem("escasez"))
+run
+
+#Decide not to stem stopwords.
+
+stemmer2 = SnowballStemmer("spanish", ignore_stopwords=True)
+
+#see results
+print(stemmer.stem("comida"))
+
