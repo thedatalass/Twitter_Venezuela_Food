@@ -1,0 +1,79 @@
+easy_install beautifulsoup4
+
+pip install beautifulsoup4
+from BeautifulSoup import BeautifulSoup
+
+#searches a particular url and finds all html tags
+import urllib2 
+url = urllib2.urlopen("http://www.python.org")
+
+content = url.read()
+
+soup = BeautifulSoup(content)
+
+links = soup.findAll("a")
+
+#website scrape of the Huffington Post
+from urllib import urlopen
+
+from BeautifulSoup import BeautifulSoup
+
+import re
+
+# Copy all of the content from the provided web page
+webpage = urlopen('http://feeds.huffingtonpost.com/huffingtonpost/LatestNews').read()
+
+# Grab everything that lies between the title tags using a REGEX
+patFinderTitle = re.compile('')
+
+# Grab the link to the original article using a REGEX
+patFinderLink = re.compile('')
+
+# Store all of the titles and links found in 2 lists
+findPatTitle = re.findall(patFinderTitle,webpage)
+
+findPatLink = re.findall(patFinderLink,webpage)
+
+# Create an iterator that will cycle through the first 16 articles and skip a few
+listIterator = []
+
+listIterator[:] = range(2,16)
+
+soup2 = BeautifulSoup(webpage)
+
+#print soup2.findAll("title")
+
+titleSoup = soup2.findAll("title")
+
+linkSoup = soup2.findAll("link")
+
+for i in listIterator:
+    print titleSoup[i]
+    print linkSoup[i]
+    print "
+    
+    #Get the Geo Location of an IP Address
+    import re
+import sys
+import urllib2
+import BeautifulSoup
+
+usage = "Run the script: ./geolocate.py IPAddress"
+
+if len(sys.argv)!=2:
+    print(usage)
+    sys.exit(0)
+
+if len(sys.argv) > 1:
+    ipaddr = sys.argv[1]
+
+geody = "http://www.geody.com/geoip.php?ip=" + ipaddr
+html_page = urllib2.urlopen(geody).read()
+soup = BeautifulSoup.BeautifulSoup(html_page)
+
+# Filter paragraph containing geolocation info.
+paragraph = soup('p')[3]
+
+# Remove html tags using regex.
+geo_txt = re.sub(r'<.*?>', '', str(paragraph))
+print geo_txt[32:].strip()
