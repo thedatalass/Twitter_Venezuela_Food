@@ -1,8 +1,10 @@
 #Using IP address to locate a tweet by neighborhood doesn’t violate Twitter’s privacy policy: https://support.twitter.com/articles/78525#
-#
+#22% of Americans use Twitter according to Pew Research Project- how many Venezuelans use Twitter?
+
 1. Get the data in Spanish
+2. Translate data from Spanish to English: Spanish-to-English Digestible Dictionary: http://www.dicts.info/uddl.php 
 2. NLP the data
-3. Machine Learning Validation - Kernel Density, Logistic Regress Model
+3. Machine Learning Validation - Kernel Density, Nearest Neighbor, DBSCAN Logistic Regression Model
 4. Visualization
  a. Scattermapbox - heat map by neighborhood
  b. Interactive component?
