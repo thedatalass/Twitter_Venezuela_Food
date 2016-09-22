@@ -1,3 +1,5 @@
+#Using IP address to locate a tweet by neighborhood doesn’t violate Twitter’s privacy policy: https://support.twitter.com/articles/78525#
+#
 1. Get the data in Spanish
 2. NLP the data
 3. Machine Learning Validation - Kernel Density, Logistic Regress Model
