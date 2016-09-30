@@ -1,3 +1,6 @@
+Copyright Laura Kahn
+09-30-16
+
 #From the windows command
 pip-install pyquery
 
@@ -18,6 +21,7 @@ tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
+#Narrowing search terms to each of the five municipalities in Caracas, Venezuela
 #set Libertador leche search criteria
 tweetCriteria.setQuerySearch('leche geocode: 10.4776, 66.9273, 10 km')
 tweetCriteria.setSince("2014-12-01")
