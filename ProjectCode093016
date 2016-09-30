@@ -1,3 +1,6 @@
+#From the windows command
+pip-install pyquery
+
 import got3
 import tweepy
 import numpy as np
@@ -45,20 +48,21 @@ tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
-#Set caracas wide harina search criteria
+#ARROZ
+#Set caracas wide arroz search criteria
 tweetCriteria = got3.manager.TweetCriteria()
-tweetCriteria.setQuerySearch('harina geocode: 10.4806, 66.9036, 10 km')
+tweetCriteria.setQuerySearch('arroz geocode: 10.4806, 66.9036, 10 km')
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
-#set Libertador harina search criteria
-tweetCriteria.setQuerySearch('harina, geocode: 10.4776, 66.9273, 10 km')
+#set Libertador arroz search criteria
+tweetCriteria.setQuerySearch('arroz, geocode: 10.4776, 66.9273, 10 km')
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
-#Set Chacao harina data search criteria
+#Set Chacao arroz data search criteria
 tweetCriteria.setQuerySearch('harina, geocode: 10.4979, 66.8499, 4 km')
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
@@ -82,39 +86,78 @@ tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
-#Set caracas wide arroz search criteria
+#HARINA
+#Set caracas wide harina search criteria
 tweetCriteria = got3.manager.TweetCriteria()
-tweetCriteria.setQuerySearch('arroz geocode: 10.4806, 66.9036, 10 km')
+tweetCriteria.setQuerySearch('harina geocode: 10.4806, 66.9036, 10 km')
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
-#set Libertador arroz search criteria
-tweetCriteria.setQuerySearch('arroz geocode: 10.4776, 66.9273, 10 km')
+#set Libertador harina search criteria
+tweetCriteria.setQuerySearch('harina geocode: 10.4776, 66.9273, 10 km')
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
-#Set Chacao arroz data search criteria
-tweetCriteria.setQuerySearch('arroz geocode: 10.4979, 66.8499, 4 km')
+#Set Chacao harina data search criteria
+tweetCriteria.setQuerySearch('harina geocode: 10.4979, 66.8499, 4 km')
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
-#Set Baruta arroz search criteria
-tweetCriteria.setQuerySearch('arroz geocode: 10.3788, 66.8522, 5 km')
+#Set Baruta harina search criteria
+tweetCriteria.setQuerySearch('harina geocode: 10.3788, 66.8522, 5 km')
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
-#set Hatillo arroz search criteria
-tweetCriteria.setQuerySearch('arroz geocode: 10.4151, 66.7963, 6 km')
+#set Hatillo harina search criteria
+tweetCriteria.setQuerySearch('harina geocode: 10.4151, 66.7963, 6 km')
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
-#set Sucre arroz search criteria
-tweetCriteria.setQuerySearch('arroz geocode: 10.4776, 66.9273, 6 km')
+#set Sucre harina search criteria
+tweetCriteria.setQuerySearch('harina geocode: 10.4776, 66.9273, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#PAN
+#Set Caracas wide pan search criteria
+tweetCriteria = got3.manager.TweetCriteria()
+tweetCriteria.setQuerySearch('pan geocode: 10.4806, 66.9036, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Libertador pan search criteria
+tweetCriteria.setQuerySearch('pan geocode: 10.4776, 66.9273, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Chacao pan data search criteria
+tweetCriteria.setQuerySearch('pan geocode: 10.4979, 66.8499, 4 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Baruta pan search criteria
+tweetCriteria.setQuerySearch('pan geocode: 10.3788, 66.8522, 5 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Hatillo pan search criteria
+tweetCriteria.setQuerySearch('pan geocode: 10.4151, 66.7963, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Sucre pan search criteria
+tweetCriteria.setQuerySearch('pan geocode: 10.4776, 66.9273, 6 km')
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
