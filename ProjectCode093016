@@ -162,6 +162,82 @@ tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
+#AZUCAR
+#Set Caracas wide azucar search criteria
+tweetCriteria = got3.manager.TweetCriteria()
+tweetCriteria.setQuerySearch('azucar geocode: 10.4806, 66.9036, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Libertador azucar search criteria
+tweetCriteria.setQuerySearch('azucar geocode: 10.4776, 66.9273, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Chacao azucar data search criteria
+tweetCriteria.setQuerySearch('azucar geocode: 10.4979, 66.8499, 4 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Baruta azucar search criteria
+tweetCriteria.setQuerySearch('azucar geocode: 10.3788, 66.8522, 5 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Hatillo azucar search criteria
+tweetCriteria.setQuerySearch('azucar geocode: 10.4151, 66.7963, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Sucre azucar search criteria
+tweetCriteria.setQuerySearch('azucar geocode: 10.4776, 66.9273, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#QUESO
+#Set Caracas wide queso search criteria
+tweetCriteria = got3.manager.TweetCriteria()
+tweetCriteria.setQuerySearch('queso geocode: 10.4806, 66.9036, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Libertador queso search criteria
+tweetCriteria.setQuerySearch('queso geocode: 10.4776, 66.9273, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Chacao queso data search criteria
+tweetCriteria.setQuerySearch('queso geocode: 10.4979, 66.8499, 4 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Baruta queso search criteria
+tweetCriteria.setQuerySearch('queso geocode: 10.3788, 66.8522, 5 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Hatillo queso search criteria
+tweetCriteria.setQuerySearch('queso geocode: 10.4151, 66.7963, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Sucre queso search criteria
+tweetCriteria.setQuerySearch('queso geocode: 10.4776, 66.9273, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
 #Get Caracas leche data results
 leche_caracas_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
 for x in leche_caracas_tweets:
