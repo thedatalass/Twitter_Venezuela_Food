@@ -238,7 +238,122 @@ tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
-#Get Caracas leche data results
+#POLLO
+#Set caracas wide pollo search criteria
+tweetCriteria = got3.manager.TweetCriteria()
+tweetCriteria.setQuerySearch('pollo geocode: 10.4806, 66.9036, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Libertador pollo search criteria
+tweetCriteria.setQuerySearch('pollo, geocode: 10.4776, 66.9273, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Chacao pollo data search criteria
+tweetCriteria.setQuerySearch('pollo, geocode: 10.4979, 66.8499, 4 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Baruta pollo search criteria
+tweetCriteria.setQuerySearch('pollo geocode: 10.3788, 66.8522, 5 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Hatillo pollo search criteria
+tweetCriteria.setQuerySearch('pollo geocode: 10.4151, 66.7963, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Sucre pollo search criteria
+tweetCriteria.setQuerySearch('pollo geocode: 10.4776, 66.9273, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#CARNE
+#Set caracas wide carne search criteria
+tweetCriteria = got3.manager.TweetCriteria()
+tweetCriteria.setQuerySearch('carne geocode: 10.4806, 66.9036, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Libertador carne search criteria
+tweetCriteria.setQuerySearch('carne, geocode: 10.4776, 66.9273, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Chacao carne data search criteria
+tweetCriteria.setQuerySearch('carne, geocode: 10.4979, 66.8499, 4 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Baruta carne search criteria
+tweetCriteria.setQuerySearch('carne geocode: 10.3788, 66.8522, 5 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Hatillo carne search criteria
+tweetCriteria.setQuerySearch('carne geocode: 10.4151, 66.7963, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Sucre carne search criteria
+tweetCriteria.setQuerySearch('carne geocode: 10.4776, 66.9273, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#ACEITE
+#Set caracas wide aceite search criteria
+tweetCriteria = got3.manager.TweetCriteria()
+tweetCriteria.setQuerySearch('aceite geocode: 10.4806, 66.9036, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Libertador aceite search criteria
+tweetCriteria.setQuerySearch('aceite, geocode: 10.4776, 66.9273, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Chacao aceite data search criteria
+tweetCriteria.setQuerySearch('aceite, geocode: 10.4979, 66.8499, 4 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Baruta aceite search criteria
+tweetCriteria.setQuerySearch('aceite geocode: 10.3788, 66.8522, 5 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Hatillo aceite search criteria
+tweetCriteria.setQuerySearch('aceite geocode: 10.4151, 66.7963, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Sucre aceite search criteria
+tweetCriteria.setQuerySearch('aceite geocode: 10.4776, 66.9273, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+
+#Get Caracas-wide leche data results
 leche_caracas_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
 for x in leche_caracas_tweets:
 print(x.text)
