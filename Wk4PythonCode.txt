@@ -10,8 +10,8 @@ pip install tweepy
 #Python code Anaconda
 import tweepy
 type(tweepy)
-API_KEY = "rPA7yZAP5902lpj1K4Jd2342N"
-API_SECRET = "HhKcMrY0TxLTtkNsie2bmMvtKZTl7wYAMVe56E1EI5FsQMTVeo"
+API_KEY = ""
+API_SECRET = ""
 auth = tweepy.AppAuthHandler(API_KEY, API_SECRET)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 user = api.get_user("IUBloomington")
