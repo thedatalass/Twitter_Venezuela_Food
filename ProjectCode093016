@@ -352,6 +352,43 @@ tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
 tweetCriteria.setMaxTweets(1000)
 
+#MARGARINA
+#Set caracas wide margarina search criteria
+tweetCriteria = got3.manager.TweetCriteria()
+tweetCriteria.setQuerySearch('margarina geocode: 10.4806, 66.9036, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Libertador margarina search criteria
+tweetCriteria.setQuerySearch('margarina, geocode: 10.4776, 66.9273, 10 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Chacao margarina data search criteria
+tweetCriteria.setQuerySearch('margarina, geocode: 10.4979, 66.8499, 4 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#Set Baruta margarina search criteria
+tweetCriteria.setQuerySearch('margarina geocode: 10.3788, 66.8522, 5 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Hatillo margarina search criteria
+tweetCriteria.setQuerySearch('margarina geocode: 10.4151, 66.7963, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
+
+#set Sucre margarina search criteria
+tweetCriteria.setQuerySearch('margarina geocode: 10.4776, 66.9273, 6 km')
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+tweetCriteria.setMaxTweets(1000)
 
 #Get Caracas-wide leche data results
 leche_caracas_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
