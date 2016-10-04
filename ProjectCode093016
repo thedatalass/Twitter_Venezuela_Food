@@ -5,8 +5,8 @@ Copyright Laura Kahn
 pip-install pyquery
 
 import got3
-import tweepy
 import numpy as np
+import pandas as pd
 import csv
 
 API_KEY = ""
@@ -16,11 +16,15 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 #Set caracas wide leche search criteria
 tweetCriteria = got3.manager.TweetCriteria()
-tweetCriteria.setQuerySearch('leche geocode: 10.4806, 66.9036, 10 km')
+tweetCriteria.setQuerySearch('leche geocode:10.4806,-66.9036,10km')
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
-tweetCriteria.setMaxTweets(1000)
+leche_caracas_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
 
+for x in leche_caracas_tweets:
+    print(x.text)
+    print(x.date)
+    
 #Narrowing search terms to each of the five municipalities in Caracas, Venezuela
 #set Libertador leche search criteria
 tweetCriteria.setQuerySearch('leche geocode: 10.4776, 66.9273, 10 km')
