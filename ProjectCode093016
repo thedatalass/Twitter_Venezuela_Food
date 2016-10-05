@@ -5,29 +5,22 @@ Copyright Laura Kahn
 pip-install pyquery
 
 import got3
-import numpy as np
-import pandas as pd
 import csv
 
-API_KEY = ""
-API_SECRET = ""
-auth = tweepy.AppAuthHandler(API_KEY, API_SECRET)
-api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
-
-#LECHE
-#Set caracas wide leche search criteria
+#ESCASEZ
+#Set caracas wide escasez search criteria
 tweetCriteria = got3.manager.TweetCriteria()
 tweetCriteria.setQuerySearch('leche geocode:10.4806,-66.9036,10km')
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
-leche_caracas_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
+escasez_caracas_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
 
-for x in leche_caracas_tweets:
-    print(x.text)
-    print(x.date)
-    print(x.retweets)
+for x in escasez_caracas_tweets:
+    print(x.text, x.date, x.retweets)
+  
  
 #Convert text to CSV for processing: https://bytes.com/topic/python/answers/856037-need-help-converting-text-csv-format
+
 
 #Narrowing search terms to each of the five municipalities in Caracas, Venezuela
 #set Libertador leche search criteria
