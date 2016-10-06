@@ -1,0 +1,37 @@
+#from CMD window, "pip install pyquery"
+
+import got3 
+import pandas as pd
+
+#ESCASEZ- CARACAS
+tweetCriteria = got3.manager.TweetCriteria()
+tweetCriteria.setQuerySearch("escasez geocode:10.4806,-66.9036,10km")
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+escasez_in_caracas = got3.manager.TweetManager.getTweets(tweetCriteria)
+
+for x in escasez_in_caracas:
+    print(x.text, x.date, x.favorites, x.retweets)
+    print("*"* 50)
+    
+#Transform Tweets to list using Pandas
+escasez_in_caracas = got3.manager.TweetManager.getTweets(tweetCriteria)
+
+for x in escasez_in_caracas:
+    tid = tweet.id
+    date = tweet.date
+    favorite = tweet.favorites
+    retweet = tweet.retweets
+    text = tweet.text
+    this_tweet = [tid, date, text, favorite, retweet]
+    escasez_in_caracas.append(this_tweet)
+
+df = pd.DataFrame(escasez_in_caracas)
+df.head()
+
+#Stem Text with Snowball
+from nltk import word_tokenizer
+from nltk.stem import SnowballStemmer
+
+stemmer = SnowballStemmer('spanish')
+stemmer.stem('df')
