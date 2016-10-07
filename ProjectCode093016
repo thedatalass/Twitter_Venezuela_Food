@@ -1,5 +1,5 @@
 Copyright Laura Kahn
-09-30-16
+10-7-16
 
 #From the windows command
 pip-install pyquery
@@ -10,24 +10,53 @@ import csv
 #ESCASEZ
 #Set caracas wide escasez search criteria
 tweetCriteria = got3.manager.TweetCriteria()
-tweetCriteria.setQuerySearch('leche geocode:10.4806,-66.9036,10km')
+tweetCriteria.setQuerySearch("escasez geocode:10.4806,-66.9036,10km")
 tweetCriteria.setSince("2014-12-01")
-tweetCriteria.setUntil("2016-09-30")
-escasez_caracas_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
+tweetCriteria.setUntil("2016-09-30")e
+scasez_c_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
+for x in escasez_c_tweets:    
+    print(x.text, x.date, x.favorites, x.retweets)    
+    print("*"* 50)
 
-for x in escasez_caracas_tweets:
-    print(x.text, x.date, x.retweets)
+#Transform Tweets to List using Pandas
+
+# Need to initialize an empty list to collect tweetsextracted_data = []
+for tweet in escasez_c_tweets:    
+    tid = tweet.id    
+#date_created = tweet.created_at    
+    date_created = tweet.date    
+#favorite_count = tweet.favorite_count    
+    favorite_count = tweet.favorites    
+#retweet_count = tweet.retweet_count    
+    retweet_count = tweet.retweets    
+    text = tweet.text    
+#escasez_c_tweets = [tid, hour_created, text, favorite_count, retweet_count]    
+# escasez_c_tweets is an existing object - it's the list of tweet objects    # from GOT. 
+We don't want to assign the data to escasez_c_tweets    
+this_tweet_extracted_information = [tid, date_created, text, favorite_count, retweet_count]    
+# tweetCriteria.append(escasez_c_tweets)   
+# tweetCriteria is the tweet criteria object, not a list we can append to   
+# I made an empty list above (line 2) the for loop to contain our tweet extracted info    
+extracted_data.append(this_tweet_extracted_information)
+
+# Argument to DataFrame is extracted_data, the list # of lists containing extracted]
+datadf = pd.DataFrame(extracted_data)
+# df.columns = ["tid", "date_created", "favorite_count", "retweet_count", "text"]
+# The name of the columns should correspond to order that we designated for each tweet
+# This occurs in line 16 in the above cell.df.columns = ["tid", "date_created", "text", "favorite_count", "retweet_count"]
+df.index = df["tid"]
+del df["tid"]
 
 #HAMBRE
-#Set caracas wide escasez search criteria
+#Set caracas wide hambre search criteria
 tweetCriteria = got3.manager.TweetCriteria()
-tweetCriteria.setQuerySearch('hambre geocode:10.4806,-66.9036,10km')
+tweetCriteria.setQuerySearch("hambre geocode:10.4806,-66.9036,10km")
 tweetCriteria.setSince("2014-12-01")
 tweetCriteria.setUntil("2016-09-30")
-hambre_caracas_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
-
-for x in hambre_caracas_tweets:
-    print(x.text, x.date, x.retweets)  
+escasez_h_tweets = got3.manager.TweetManager.getTweets(tweetCriteria)
+for x in escasez_h_tweets:        
+     print(x.text, x.date, x.favorites, x.retweets)        
+     print("*"* 50)
 
 #ANAQUELESVACIOS
 
