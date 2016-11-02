@@ -80,18 +80,21 @@ new
 
 #Tokenize, Stem, Remove Stopwords, Lowercase, Remove Punctuation, Remove URLS
 #Use Snowball Stemmer for Spanish text
-
+import pandas as pd
+from nltk.tokenize import TweetTokenizer
 from nltk.stem import SnowballStemmer
+
 stemmer = SnowballStemmer("spanish")
-
-stemmed_texts = []
-
-for text in text:
-    tokenized_text = word_tokenize(text) # or whatever tokenizer you're using
-    stemmed_text = []
+alldatadf = pd.read_csv("Data-1-Tab110216.csv", index_col=0, encoding="latin1")
+text = alldatadf['text']
+for text in alldatadf:
+    tt=TweetTokenizer()
+    tokenized_text = tt.tokenize(text) # or whatever tokenizer you're using
+    stemmed_texts = []
     for token in tokenized_text:
          stemmed_word = stemmer.stem(token)
          stemmed_text.append(stemmed_word)
     stemmed_texts.append(stemmed_text)
 stemmed_texts
+
 
