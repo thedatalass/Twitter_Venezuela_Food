@@ -1,0 +1,52 @@
+#From CMD window, "pip install pyquery"
+#from CMD window, "pip install nltk"
+#from CMD window, "pip install stop-words"
+
+import got3
+import pandas as pd
+#Entire Caracas City
+#Set Caracas-wide search criteria for "escasez"
+#Transform Tweets to Data Frame using Pandas
+tweetCriteria = got3.manager.TweetCriteria()
+tweetCriteria.setQuerySearch("escasez geocode:10.4806,-66.9036,10km")
+tweetCriteria.setSince("2014-12-01")
+tweetCriteria.setUntil("2016-09-30")
+escasez_c_tweets = got3.manager.TweetManager.getTweets(TweetCriteria)
+
+#Initialize an empty list to collect tweets
+extracted_data = []
+for tweet in escasez_c_tweets:
+    tid = tweet.id
+    #date_created = tweet.created_at
+    date_created = tweet.date
+    #favorite_count = tweet.favorite_count
+    favorite_count = tweet.favorites
+    #retweet_count = tweet.retweet_count
+    retweet_count = tweet.retweets
+    text = tweet.text
+    #escasez_c_tweets = [tid, hour_created, text, favorite_count, retweet_count]
+    # escasez_c_tweets is an existing object - it's the list of tweet objects
+    # from GOT. We don't want to assign the data to escasez_c_tweets
+    this_tweet_extracted_information = [tid, date_created, text, favorite_count, retweet_count]
+    # tweetCriteria.append(escasez_c_tweets)
+    # tweetCriteria is the tweet criteria object, not a list we can append to
+    # I made an empty list above (line 2) the for loop to contain our tweet extracted info
+    extracted_data.append(this_tweet_extracted_information)
+    
+# Argument to DataFrame is extracted_data, the list 
+# of lists containing extracted data
+df = pd.DataFrame(extracted_data)
+# df.columns = ["tid", "date_created", "favorite_count", "retweet_count", "text"]
+# The name of the columns should correspond to order that we designated for each tweet
+# This occurs in line 16 in the above cell.
+df.columns = ["tid", "date_created", "text", "favorite_count", "retweet_count"]
+df.index = df["tid"]
+del df["tid"]
+df.shape
+df
+
+#Subset the data to retrieve results where favorites count and retweet counts are greater than 5
+subset = df[ df['favorite_count'] > 5]
+subset = df[ df['retweet_count'] > 5]
+subset.shape
+subset
