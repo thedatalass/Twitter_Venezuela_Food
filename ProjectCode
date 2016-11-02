@@ -50,3 +50,26 @@ subset = df[ df['favorite_count'] > 5]
 subset = df[ df['retweet_count'] > 5]
 subset.shape
 subset
+
+#Convert Data frame to CSV file for Raw and Filtered data set results.
+
+df.to_csv("Escasez-Caracas.csv")
+subset.to_csv("Escasez-filtered-Caracas.csv")
+
+#Repeat Code above for each neighborhood (Caracas, Baruta, Chacao, El Hatillo, Libertador and Sucre) and 
+for each search term ("alimentos", "#AnaquelesenVenezuela", "escasez", "hambre", "VzlaTieneHambre"
+
+#Combine all filtered datasets into 1 CSV file named "Data-1-Tab110216.csv"
+#UserId column was removed and a Neighborhood & Search Term Column was added to the CSV file
+
+import pandas as pd
+df = pd.DataFrame()
+alldatadf = pd
+alldatadf = pd.read_csv("Data-1-Tab110216.csv", index_col=0, encoding="latin1")
+alldatadf
+
+#Convert the text from the CSV file into a list for NLP processing
+alldatadf.tolist()
+#Tokenize, Stem, Remove Stopwords, Lowercase, Remove Punctuation, Remove URLS
+
+
