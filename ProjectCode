@@ -69,7 +69,29 @@ alldatadf = pd.read_csv("Data-1-Tab110216.csv", index_col=0, encoding="latin1")
 alldatadf
 
 #Convert the text from the CSV file into a list for NLP processing
-alldatadf.tolist()
-#Tokenize, Stem, Remove Stopwords, Lowercase, Remove Punctuation, Remove URLS
+#Note we're importing pandas again in the same cell so we don't have to re-run it in jupyter notebook if we 
+#close and restart at another time
 
+import pandas as pd
+alldatadf = pd.read_csv("Data-1-Tab110216.csv", index_col=0, encoding="latin1") 
+text = alldatadf['text']
+new = text.values.tolist()
+new
+
+#Tokenize, Stem, Remove Stopwords, Lowercase, Remove Punctuation, Remove URLS
+#Use Snowball Stemmer for Spanish text
+
+from nltk.stem import SnowballStemmer
+stemmer = SnowballStemmer("spanish")
+
+stemmed_texts = []
+
+for text in text:
+    tokenized_text = word_tokenize(text) # or whatever tokenizer you're using
+    stemmed_text = []
+    for token in tokenized_text:
+         stemmed_word = stemmer.stem(token)
+         stemmed_text.append(stemmed_word)
+    stemmed_texts.append(stemmed_text)
+stemmed_texts
 
