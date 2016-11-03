@@ -1,7 +1,0 @@
-import got3
-import pandas as pd
-
-tweet = got3.manager.TweetManager.getTweets(tweetCriteria)
-#Set Caracas wide leche search criteria  
-tweetCriteria = got3.manager.tweetCriteria().setQuerySearch('leche', geocode: 10.4806, 66.9036, 10km'.setSince("2014-12-01").setUntil("2016-09-30")
-print (tweet.text)
