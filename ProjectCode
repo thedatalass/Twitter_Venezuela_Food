@@ -128,3 +128,18 @@ for text in alltext:
         # lists we are using to collect all results
         all_processed_texts.append(stemmed)
         all_extracted_urls.append(urls)
+        
+for text in all_processed_texts:
+    print(text)
+
+#Here are the captured URLs
+for u in all_extracted_urls:
+    print(u)
+
+#We can add the tokenized, stemmed tweets and the extracted URLs as columns to our overall dataframe.
+alldatadf['processed_texts'] = all_processed_texts
+alldatadf['extracted_urls'] = all_extracted_urls
+alldatadf
+
+
+
