@@ -1,0 +1,13 @@
+#pip install folium
+#Folium uses OpenstreetMap (OSM)
+#Get Caracas Coordinates from OSM: https://www.openstreetmap.org/node/914310439
+
+import folium
+map_osm = folium.Map(location=[10.506098,-66.9146017], zoom_start=12)
+map_osm
+
+#Insert Leaflet-style markers for most common words in each of the Caracas municipalities
+folium.Marker([10.50,-66.91], popup='Alimentos',marker_color='blue').add_to(map_osm)
+folium.Marker([10.48,-66.92], popup='Escasez',marker_color='green').add_to(map_osm)
+map_osm.save('caracas.html')
+map_osm
