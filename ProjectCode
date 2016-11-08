@@ -78,27 +78,53 @@ text = alldatadf['text']
 new = text.values.tolist()
 new
 
-#Tokenize, Stem, Remove Stopwords, Lowercase, Remove Punctuation, Remove URLS
+#Tokenize, Stem, Remove Stopwords, Lowercase, Remove URLS, Collect URLs into a list
 #Use Snowball Stemmer for Spanish text
-import pandas as pd
-from nltk.tokenize import TweetTokenizer
-from nltk.stem import SnowballStemmer
+# Load spanish stopwords
+import nltk
+from nltk.corpus import stopwords
+stopword_list = stopwords.words("spanish")
 
+from nltk.stem import SnowballStemmer
 stemmer = SnowballStemmer("spanish")
 alldatadf = pd.read_csv("Data-1-Tab110216.csv", index_col=0, encoding="latin1")
-text = alldatadf['text']
-for text in alldatadf:
-    tt=TweetTokenizer()
-    tokenized_text = tt.tokenize(text) # or whatever tokenizer you're using
-    stemmed_texts = []
-    for token in tokenized_text:
-         stemmed_word = stemmer.stem(token)
-         stemmed_text.append(stemmed_word)
-    stemmed_texts.append(stemmed_text)
-stemmed_texts
+alltext = alldatadf['text']
 
-#Remove Stopwords in Spanish
-from nltk.corpus import stopwords
-# ...
-withoutstop_words = [word for word in stemmed_texts if word not in stopwords.words('spanish')]
-withoutstop_words
+all_processed_texts = []
+all_extracted_urls = []
+
+for text in alltext:
+    if pd.isnull(text):
+        # If t is null, this is an empty row with neighborhood information.
+        # There is still one neighborhood row in this file.
+        # Add None to both lists to make sure it still has the right amount of rows.
+        all_processed_texts.append(None)
+        all_extracted_urls.append(None)
+    else:
+        # Else, we have a properly formatted row, continue as normal
+        # This will contain the stemmed words
+        stemmed = []
+        # This will contain anything we identify as part of a URL
+        urls = []
+        tokenized = tt.tokenize(text)
+        # tokenized is a list of tokens. We iterate through the tokens to 
+        # 1. see if it is a URL part and
+        # 2. stem it, if it is not
+        for token in tokenized:
+            if "/" in token or "http" in token or "-" in token:
+                # If it contains /, http, or -, it's probably a URL part
+                # Append it to the list we are using to collect urls
+                urls.append(token)
+            else:
+                # If it doesn't, it's a normal word.
+                # If it's in the stoplist, IGNORE IT
+                if token in stopword_list:
+                    pass
+                else:
+                    stemmed_token = stemmer.stem(token)
+                    # Append stemmed token to list we are using to collect tokens
+                    stemmed.append(stemmed_token)
+        # Add the URLs and stemmed words for THIS TWEET to the 
+        # lists we are using to collect all results
+        all_processed_texts.append(stemmed)
+        all_extracted_urls.append(urls)
