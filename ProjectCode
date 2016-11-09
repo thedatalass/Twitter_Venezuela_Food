@@ -82,6 +82,8 @@ new
 #Use Snowball Stemmer for Spanish text
 # Load spanish stopwords
 import nltk
+from nltk import TweetTokenizer
+tt = TweetTokenizer()
 from nltk.corpus import stopwords
 stopword_list = stopwords.words("spanish")
 
