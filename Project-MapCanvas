@@ -1,3 +1,0 @@
-http://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/canvas.html
-The Map canvas widget is probably the most important widget within QGIS because it shows the map composed from overlaid map layers and allows interaction with the map and layers. The canvas shows always a part of the map defined by the current canvas extent. The interaction is done through the use of map tools: there are tools for panning, zooming, identifying layers, measuring, vector editing and others. 
-Similar to other graphics programs, there is always one tool active and the user can switch between the available tools.
