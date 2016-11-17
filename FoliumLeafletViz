@@ -1,0 +1,29 @@
+from IPython.display import HTML
+import folium
+map_osm = folium.Map(location=[10.506098,-66.9146017], zoom_start=11)
+map_osm
+
+#Leaflet-Style Markers from Scratch
+#Most Frequent Words in Each Municipality
+#Baruta - Hambre
+folium.Marker([10.3788,-66.8522], 
+              popup='Hambre',icon=folium.Icon(color='blue',icon='cutlery')).add_to(map_osm)
+
+#Chacao - Hambre
+folium.Marker([10.4979,-66.8499], 
+              popup='Hambre',icon=folium.Icon(color='blue',icon='cutlery')).add_to(map_osm)
+
+#El Hatillo - Hambre
+folium.Marker([10.4151,-66.7963], 
+              popup='Hambre',icon=folium.Icon(color='blue',icon='cutlery')).add_to(map_osm)
+
+#Libertador - Alimentos
+folium.Marker([10.4776,-66.9273], 
+              popup='Alimentos',icon=folium.Icon(color='purple',icon='cutlery')).add_to(map_osm)
+
+#Sucre - Hambre
+folium.Marker([10.4776,-66.7725], 
+              popup='Hambre',icon=folium.Icon(color='blue',icon='cutlery')).add_to(map_osm)
+
+map_osm.save('caracas.html')
+map_osm
