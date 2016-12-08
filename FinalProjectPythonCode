@@ -1,0 +1,232 @@
+#IU 639: Social Media Mining Final Project
+#December 9, 2016
+#Laura Kahn
+
+#Project Goal is to Test Whether Machine Learning Classifiers can Predict Neighborhood/Municipality Location with text from
+#Tweets in Caracas, Venezuela  from December 1, 2014 - September 30, 2016
+
+#Before initializing the Got3 historical tweet grabber, we need to install several Python packages 
+
+#from CMD window, "pip install nltk", "pip install stop-words"
+#from CMD window, "pip install pyquery", #pip install folium
+
+#Each of the 30 search criteria combinations were combined into one data CSV table. User id was removed manually.
+#Neighborhood and Search Term were also added manually to the table. The table was converted to a Data Frame.
+
+import pandas as pd
+df = pd.DataFrame()
+alldatadf = pd.read_csv("Data-1-Tab110216.csv", index_col=0, encoding="latin1") 
+alldatadf
+
+#Natural Language Processing:
+#a) Tokenize, b)Stem, c) Remove stopwords, d) Lowercase, e)Remove punctuation, f)Remove URLS
+
+import nltk
+
+#Convert alldatadf to List before using Tweet Tokenizer to Tokenize text
+import pandas as pd
+alldatadf = pd.read_csv("Data-1-Tab110216.csv", index_col=0, encoding="latin1") 
+text = alldatadf['text']
+text
+
+import pandas as pd
+alldatadf = pd.read_csv("Data-1-Tab110216.csv", index_col=0, encoding="latin1") 
+text = alldatadf['text']
+new = text.values.tolist()
+new[:25]
+
+# Load spanish stopwords
+import pandas as pd
+import nltk
+from nltk import TweetTokenizer
+tt = TweetTokenizer()
+from nltk.corpus import stopwords
+stopword_list = stopwords.words("spanish")
+
+from nltk.stem import SnowballStemmer
+stemmer = SnowballStemmer("spanish")
+alldatadf = pd.read_csv("Data-1-Tab110216.csv", index_col=0, encoding="latin1")
+alltext = alldatadf['text']
+
+all_processed_texts = []
+all_extracted_urls = []
+
+for text in alltext:
+    if pd.isnull(text):
+        # If t is null, this is an empty row with neighborhood information.
+        # There is still one neighborhood row in this file.
+        # Add None to both lists to make sure it still has the right amount of rows.
+        all_processed_texts.append(None)
+        all_extracted_urls.append(None)
+    else:
+        # Else, we have a properly formatted row, continue as normal
+        # This will contain the stemmed words
+        stemmed = []
+        # This will contain anything we identify as part of a URL
+        urls = []
+        tokenized = tt.tokenize(text)
+        # tokenized is a list of tokens. We iterate through the tokens to 
+        # 1. see if it is a URL part and
+        # 2. stem it, if it is not
+        for token in tokenized:
+            if "/" in token or "http" in token or "-" in token:
+                # If it contains /, http, or -, it's probably a URL part
+                # Append it to the list we are using to collect urls
+                urls.append(token)
+            else:
+                # If it doesn't, it's a normal word.
+                # If it's in the stoplist, IGNORE IT
+                if token in stopword_list:
+                    pass
+                else:
+                    stemmed_token = stemmer.stem(token)
+                    # Append stemmed token to list we are using to collect tokens
+                    stemmed.append(stemmed_token)
+        # Add the URLs and stemmed words for THIS TWEET to the 
+        # lists we are using to collect all results
+        all_processed_texts.append(stemmed)
+        all_extracted_urls.append(urls)
+
+for text in all_processed_texts[:10]:
+    print(text)
+
+type(all_processed_texts)
+type(all_extracted_urls)
+
+#Remove punctuation
+import string
+no_punct = [[word for word in tweet if word not in string.punctuation]if tweet else [] for tweet in all_processed_texts]
+no_punct[:10]
+
+#Here are the captured URLs
+for u in all_extracted_urls[:10]:
+    print(u)
+
+#Save string of URLs to CSV file
+import csv
+#Define data
+ALLURLS = all_extracted_urls
+#Open File
+allurlsfile = open("allurls.csv", "w")
+#Write data to file
+for a in ALLURLS:
+    if type(a) == list:
+        allurlsfile.write(''.join(a) + "\n")
+    else:
+        print(a) # Print it out just so we can see what this nonlist is
+        allurlsfile.write("\n") # Write a blank line
+
+#Count most frequent words from Processed tweet text
+from collections import Counter
+word_frequency = Counter()
+for text in no_punct:
+    word_frequency.update(text)
+word_frequency
+
+#Plot frequency of top 30 words
+#Count most frequent words from Processed tweet text
+from collections import Counter
+word_frequency = Counter()
+for text in no_punct:
+    word_frequency.update(text)
+word_frequency
+import numpy as np
+import matplotlib.pyplot as plt
+top_words = [x[0] for x in top30]
+top_frequencies = [x[1] for x in top30]
+
+#Verify separation of data
+print(top_words[:5])
+x_positions = np.arange(30)
+plt.bar(x_positions, top_frequencies)
+plt.xticks(x_positions+0.5, top_words, rotation = 90)
+plt.title ("Word Frequency in Caracas Food Shortage Tweets")
+plt.ylabel("Frequency")
+plt.show()
+
+#language exploration using vector space models
+#import Spanish corpus-the CESS corpus (500,000 words, largest Spanish corpus)
+import nltk
+nltk.download()
+
+from nltk.corpus import cess_esp as cess
+from nltk import UnigramTagger as ut
+from nltk import BigramTagger as bt
+
+# Read the corpus into a list, 
+# each entry in the list is one sentence.
+cess_sents = cess.tagged_sents()
+
+# Train the unigram tagger
+uni_tag = ut(cess_sents)
+
+sentence = "Hola , esta foo bar ."
+
+# Tagger reads a list of tokens.
+uni_tag.tag(sentence.split(" "))
+
+# Split corpus into training and testing set.
+train = int(len(cess_sents)*90/100) # 90%
+
+# Train a bigram tagger with only training data.
+bi_tag = bt(cess_sents[:train])
+
+# Evaluates on testing data remaining 10%
+bi_tag.evaluate(cess_sents[train+1:])
+
+# Using the tagger.
+bi_tag.tag(sentence.split(" "))
+
+#Before machine learning classifier, we need to transform words into a vector for analysis
+import string
+no_punct = [[word for word in tweet if word not in string.punctuation]if tweet else [] for tweet in all_processed_texts]
+from sklearn.feature_extraction.text import CountVectorizer
+word_vectorizer = CountVectorizer(tokenized, binary=True, ngram_range=(1,2))
+cv = CountVectorizer(lowercase=False, tokenizer=lambda x:x, stop_words=['otra','esto','aqu','hiz','desde','jajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajqjajajaj','d','en','la','no', 'los','...','de','es','hoy','q'])
+tweetvector = cv.fit_transform(no_punct)
+tweetvector.toarray()
+cv.vocabulary_
+tweetvector.shape
+
+#I've created a new CSV file that manually assigns a label to the 'Municipality' feature
+#For example, Baruta municipality  = 1; Caracas (entire city) = 2, Chaco = 3, etc
+#To minimize confusion, I've saved this file as a separate file from the "Data-1-Tab-110216.csv' file
+import pandas as pd
+df = pd.read_csv("MLdata.csv", index_col=0, encoding="latin1")
+df
+
+#For each of the ML classifiers, define the variables X and Y in vector terms
+X = tweetvector
+y = df['Feature Label']
+
+#Now let's see how good our Naive Bayes classifier is at predicting which Municipality a tweet comes from given the 
+#tweet text
+import numpy as np
+from sklearn.naive_bayes import MultinomialNB
+mnb = MultinomialNB()
+
+#Recall that tweetvector = cv.fit_transform(no_punct) which is the text that has been processed with NLP above
+#Each Municipality/Neighborhood has been assigned a label in the file 'MLdata.csv'
+
+X = tweetvector
+y = df['Feature Label']
+
+from sklearn.cross_validation import cross_val_score
+scores = cross_val_score(mnb, X, y, scoring="accuracy", cv=10)
+print("Average accuracy, 10-fold cross validation:")
+print(np.mean(scores))
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.ioff()
+
+plt.plot(scores)
+plt.xlabel("Average 10-fold CV Accuracy")
+plt.ylabel("Feature Label - Municipality")
+plt.title("Multinomial Naive Bayes Classifier")
+plt.show()
+
+
+
+
+
