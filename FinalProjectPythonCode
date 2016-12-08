@@ -226,6 +226,140 @@ plt.ylabel("Feature Label - Municipality")
 plt.title("Multinomial Naive Bayes Classifier")
 plt.show()
 
+#Logistic Regression : http://nbviewer.jupyter.org/gist/justmarkham/6d5c061ca5aee67c4316471f8c2ae976
+#Treating variables as categorical (text, neighborhood)
+from sklearn.linear_model import LogisticRegression
+from sklearn.cross_validation import train_test_split
+from sklearn import metrics
+from sklearn.cross_validation import cross_val_score
+
+#need to transform X variable (text) to a number. Use the first 25 new text variable from above
+X = tweetvector
+y= df['Feature Label']
+y.shape
+
+#Now, let's do a logistic regression ML classifier
+from sklearn import linear_model
+# evaluate the model by splitting into train and test sets 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+model2 = LogisticRegression()
+model2.fit(X_train, y_train)
+
+import numpy as np
+scores = cross_val_score(model2, X, y, scoring="accuracy", cv=10)
+print("Average accuracy, 10-fold cross validation:")
+print(np.mean(scores))
+
+#Let's make a Logistic Regression plot now (see also http://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic.html#sphx-glr-auto-examples-linear-model-plot-logistic-py)
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.ioff()
+
+plt.plot(scores)
+plt.xlabel("Average 10-fold CV Accuracy")
+plt.ylabel("Feature Label - Municipality")
+plt.title("Logistic Regression Classifier")
+plt.show()
+
+#KNN: K-nearest neighbor classifier
+import numpy as np
+import string
+
+np.random.seed(3057)
+no_punct = [[word for word in tweet if word not in string.punctuation]if tweet else [] for tweet in all_processed_texts]
+
+from sklearn.cross_validation import train_test_split
+
+from sklearn.feature_extraction.text import CountVectorizer
+word_vectorizer = CountVectorizer(tokenized, binary=True, ngram_range=(1,2))
+cv = CountVectorizer(lowercase=False, tokenizer=lambda x:x, stop_words=['otra','esto','aqu','hiz','desde','jajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajqjajajaj','d','en','la','no', 'los','...','de','es','hoy','q'])
+tweetvector = cv.fit_transform(no_punct)
+
+X = tweetvector
+y = df['Feature Label']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1234)
+print(X_train.shape)
+print(X_test.shape)
+
+from sklearn.neighbors import KNeighborsClassifier
+clf = KNeighborsClassifier(n_neighbors=20)
+
+from sklearn.cross_validation import cross_val_score
+
+cv_scores = cross_val_score(clf, X_train, y_train, scoring="accuracy", cv=10)
+print(cv_scores)
+
+print(np.mean(cv_scores))
+
+#Now let's try to find the best value of k by exploring the data with a visualization
+
+k_candidates = np.arange(1, 50, 2)
+average_accuracies = []
+
+for k in k_candidates:
+    clf = KNeighborsClassifier(n_neighbors=k)
+    cv_scores = cross_val_score(clf, X_train, y_train, scoring="accuracy", cv=10)
+    average_accuracy = np.mean(cv_scores)
+    average_accuracies.append(average_accuracy)
+    
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.ioff()
+
+plt.plot(k_candidates, average_accuracies)
+plt.xlabel("Value for k in kNN")
+plt.ylabel("Average 10-fold CV Accuracy")
+plt.show()
+
+#From this visualization, we can see that k=20 is the optimum parameter
+
+#Now let's plot the result
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.ioff()
+plt.plot(cv_scores)
+plt.xlabel("Average 10-fold CV Accuracy")
+plt.ylabel("Feature Label - Municipality")
+plt.title("K-Nearest Neighbor")
+plt.show()
+
+#Now onto the Data Visualization using Folium (will not work with Internet Explorer 11)
+#Folium uses OpenStreetMap: https://www.openstreetmap.org/node/914310439
+
+#Caracas, Venezuela Blank map
+from IPython.display import HTML
+import folium
+map_osm = folium.Map(location=10.506098,-66.9146017, zoom_start=11)
+map_osm
+
+#Manually generate Leaflet-style Markers of most popular word in each Municipality
+#Most Frequent Words in Each Municipality
+#Baruta - Hambre
+folium.Marker([10.3788,-66.8522], 
+              popup='Hambre',icon=folium.Icon(color='blue',icon='cutlery')).add_to(map_osm)
+
+#Chacao - Hambre
+folium.Marker([10.4979,-66.8499], 
+              popup='Hambre',icon=folium.Icon(color='blue',icon='cutlery')).add_to(map_osm)
+
+#El Hatillo - Hambre
+folium.Marker([10.4151,-66.7963], 
+              popup='Hambre',icon=folium.Icon(color='blue',icon='cutlery')).add_to(map_osm)
+
+#Libertador - Alimentos
+folium.Marker([10.4776,-66.9273], 
+              popup='Alimentos',icon=folium.Icon(color='purple',icon='cutlery')).add_to(map_osm)
+
+#Sucre - Hambre
+folium.Marker([10.4776,-66.7725], 
+              popup='Hambre',icon=folium.Icon(color='blue',icon='cutlery')).add_to(map_osm)
+
+map_osm.save('caracas.html')
+map_osm
+
+
 
 
 
