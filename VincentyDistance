@@ -1,0 +1,17 @@
+#Calculate geodesic distance between two points using Vincenty distance
+#Distance from Baruta to Ch
+from geopy.distance import vincenty
+baruta = (10.3788, -66.8522)
+chacao = (10.4979, -66.8499)
+print(vincenty(baruta, chacao).kilometers)
+  13.1716
+  
+#The answer according to google maps should be 20.8 km - why the discrepancy?
+
+#Calculate geodesic distance between two points using Vincenty distance
+#Distance from Libertador to El Hatillo since they're furthest apart
+from geopy.distance import vincenty
+libertador = (10.4776, -66.9273)
+hatillo = (10.4151, -66.7963)
+print(vincenty(libertador, hatillo).kilometers)
+  15.92 
