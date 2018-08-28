@@ -6,4 +6,5 @@ Abstract: Social media from countries with limits to free speech is often the mo
 
 Data: There were 37,216 filtered Tweets from December 2014-October 2016.
 
-Results: Support Vector Machine accuracy is 0.318, Logstic Regression accuracy is 0.448, Multinomial Naive Bayes accuracy is 0.383, and k-NN accuracy is 0.422.
+Results: The Random forest accuracy is 0.348 with a log loss of 1.513 and a 9% improvement over the baseline. Multinomial Naïve Bayes has an higher accuracy of 0.383 and is a 20% improvement but has a worse log loss than the random forest of 2.899. Decision Tree has an even higher accuracy of 0.431 and higher percent improvement over the baseline of 35% but a worse log loss than the previous two algorithms of 6.643. k-Nearest Neighbor has an accuracy of 0.438 and 37% improvement and has a reasonably lower log loss of 2.835. Finally, the logistic regression algorithm has the highest accuracy of 0.448, a low log loss of 1.532 and a 40.4% improvement over the baseline.
+
