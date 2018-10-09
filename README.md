@@ -2,7 +2,7 @@
 
 *!Chevere! Forecasting Tweet Location with Big Data*
 
-__Abstract__: Social media from countries with limits to free speech is often the most reliable source of event occurrence and is a reliable alternative form of journalism. Spatiotemporal analysis of location-based social media data allows new ways to describe events. Almost 37,000 Spanish geo-tagged tweets from the city of Caracas, Venezuela were used to observe reactions to the food shortage crisis within each of the city’s five municipalities. The number of tweets over time is explored. The hypotheses of whether certain tweets are particular to a municipality location is tested using logistic regression, decision tree, multinomial naïve Bayes and k-nearest neighbor machine learning classifiers.
+__Abstract__: Social media from countries with limits to free speech is often the most reliable source of event occurrence and is a reliable alternative form of journalism. Spatiotemporal analysis of location-based social media data allows new ways to describe events. Spanish geo-tagged tweets from the city of Caracas, Venezuela were used to observe reactions to the food shortages within each of the city’s five municipalities. The number of tweets over time is explored. The hypotheses of whether certain tweets are particular to a municipality location is tested using logistic regression, decision tree, multinomial naïve Bayes and k-nearest neighbor machine learning classifiers.
 
 __Data__: From 1.32 million tweets, there were 37,216 filtered tweets with keyword search criteria from December 2014-October 2016.
 
