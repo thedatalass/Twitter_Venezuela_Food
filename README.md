@@ -10,4 +10,4 @@ __Data__: From 1.32 million Spanish language tweets, there were 37,216 filtered 
 
 __Results__: The logistic regression algorithm has the highest accuracy of 0.448, a low log loss of 1.532 and a 40.4% improvement over the baseline. Decision Tree has a lower accuracy of 0.431 and higher percent improvement over the baseline of 35% but a worse log loss of 6.643. The Random forest accuracy is 0.348 with a log loss of 1.513 and a 9% improvement over the baseline. Multinomial Naïve Bayes has an accuracy of 0.383 and is a 20% improvement over the baseline but has a worse log loss than the random forest of 2.899. k-Nearest Neighbor has an accuracy of 0.438, a 37% improvement over the baseline and has a reasonably lower log loss of 2.835. 
 
-Full Paper: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8501870
+Full Paper: https://www.researchgate.net/publication/328458664_Chevere_Text-Based_Twitter_Patterns_from_Venezuelan_Food_Shortages
